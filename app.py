@@ -57,15 +57,15 @@ if len(df) > 0:
 
 st_cols = st.columns(n_cols)
 
-if not df.empty:
-    for i, st_col in enumerate(st_cols):
-        cols = st_col.multiselect('Select columns to display', df.columns, key=f"col{i}")
+for i, st_col in enumerate(st_cols):
+    cols = st_col.multiselect('Select columns to display', df.columns, key=f"col{i}")
 
-        # Display selected row
-        if current_index < df.shape[0]:
-            row = df.iloc[current_index]
-            for col in cols:
-                st_col.markdown(f"### {col}")
-                st_col.write(row[col])
+if not df.empty:
+    # Display selected row
+    if current_index < df.shape[0]:
+        row = df.iloc[current_index]
+        for col in cols:
+            st_col.markdown(f"### {col}")
+            st_col.write(row[col])
 else:
     st.write("No CSV uploaded yet or filters result in empty data.")
