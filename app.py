@@ -69,5 +69,5 @@ if not df.empty:
                 st_col.write(row[col])
 else:
     for i, st_col in enumerate(st_cols):
-        cols = st_col.multiselect('Select columns to display', df.columns, key=f"col{i}")r
+        cols = st_col.multiselect('Select columns to display', df.columns, key=f"col{i}")
     st.write("No CSV uploaded yet or filters result in empty data.")
